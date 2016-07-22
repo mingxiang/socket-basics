@@ -12,12 +12,13 @@ io.on('connection', socket => {
 
   socket.on('message', message => {
       console.log(`Message received: ${message.text}`)
-
+      message.timestamp = moment().valueOf();
       io.emit('message', message);
       //socket.broadcast.emit('message',message);
   });
 
   socket.emit('message', {
+    name : "System",
     text : "Welcome to the chat application!",
     timestamp : moment().valueOf()
   })
