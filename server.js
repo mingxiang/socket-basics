@@ -14,13 +14,12 @@ io.on('connection', socket => {
 
   socket.on('joinRoom', req => {
     clientInfo[socket.id] = req;
-    console.log(clientInfo);
-      socket.join(req.room);
-      socket.broadcast.to(req.room).emit('message',{
-        name: 'System',
-        text: `${req.name} has joined!`,
-        timestamp : moment().valueOf()
-      }) // people in this room see the message
+    socket.join(req.room);
+    socket.broadcast.to(req.room).emit('message',{
+      name: 'System',
+      text: `${req.name} has joined!`,
+      timestamp : moment().valueOf()
+    }); // people in this room see the message
   });
 
   socket.on('message', message => {
