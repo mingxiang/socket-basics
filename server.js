@@ -12,8 +12,8 @@ io.on('connection', socket => {
   socket.on('message', message => {
       console.log(`Message received: ${message.text}`)
 
-    //  io.emit('message', message);
-      socket.broadcast.emit('message',message);
+      io.emit('message', message);
+      //socket.broadcast.emit('message',message);
   });
 
   socket.emit('message', {
