@@ -7,6 +7,8 @@ socket.on('connect', () => {
 socket.on('message', message => {
   console.log('New message');
   console.log(message.text);
+
+  jQuery('.messages').append(`<p>${message.text}</p>`);
 });
 
 let $form =jQuery('#message-form');
